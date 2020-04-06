@@ -47,8 +47,9 @@ header {
 }
 
 .site-description {
-    font-family: "League Gothic", "Arial Narrow", Arial, sans-serif;
+    font-family: "Poppins", "Lato","Roboto", Arial, sans-serif;
     text-align: center;
+    font-size: 1.5rem;
 }
 
 
@@ -107,8 +108,56 @@ main {
 
 .image {
     max-width: 500px;
-    max-height: 300px;
+    /*max-height: 300px;   I don't want images to be clipped. */
     margin: 0 auto;
+}
+.image-right {
+    max-width: 300px;
+    float: right;
+    /*max-height: 300px;   I don't want images to be clipped. */
+    margin: 0 auto;
+}
+
+.image-left {
+    max-width: 300px;
+    float: left;
+    height: auto;
+    margin: 0 30px 0 0;
+}
+
+/* Not the standard clearfix.  If I used .image-left in a markdown file, each image is placed 
+in a separate block and I can't apply a clearfix to the image set.  However, if I apply 
+a clearfix just before the next paragraph it works. Not orthodox, but allows me to write 
+posts in Markdown instead of HTML */
+.clearfix-before::before{
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* Used to make an entire card clickable*/
+.clickable {
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  position: absolute;     
+  z-index: 1;
+}
+
+.bio {
+    font-weight: bold;
+    display: inline-block;
+}
+
+.center-text{
+    text-align: center;
+}
+
+.arrow{
+    font-weight: bold;
+    line-height: 0.5em;
+    text-align: center;
 }
 
 .small-date {
@@ -118,6 +167,10 @@ main {
 
 .description {
     word-wrap: break-word;
+}
+
+.scroll-code{
+    overflow: scroll;
 }
 /* /main */
 

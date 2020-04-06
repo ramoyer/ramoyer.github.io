@@ -1,0 +1,54 @@
+I"ù
+<p class="image"><img src="http://localhost:4000/images/yoyos/yoyos.jpg" alt="Yo-yos on grass" /></p>
+
+<h3 id="class">Class</h3>
+
+<p>2.008 is known as the yo-yo class at MIT.  The registrar calls it Design and Manufacturing II, and we learned about mass manufacturing and process control in the context of making our very own yo-yos.</p>
+
+<h3 id="design">Design</h3>
+
+<p>We started out by creating our own design with a minimum of 2 separate injection molded parts and one thermoformed part.  We went a bit above and beyond with 4 unique injection molded parts and 2 thermoformed parts. After deciding as a team on our design, we spent a few days creating the CAD and then a few weeks finalizing the details and converting it into G-code for our lathe and mills</p>
+
+<p class="image"><img src="http://localhost:4000/images/yoyos/exploded-cad.png" alt="Yoyo exploded CAD" /></p>
+
+<h3 id="mold-creation">Mold Creation</h3>
+
+<p>After CAD finalization, we started machining!  Since our yoyo parts are generally round, we roughed cut the shape on a lathe and then used a mill for the details:</p>
+
+<p class="image"><img src="http://localhost:4000/images/yoyos/leaf-machining.jpg" alt="Machining Leaf Cavity" /></p>
+
+<p>Sometimes there were a lot of details! We were split into 3 teams of 2 people, and this was one of the parts I was responsible for.</p>
+
+<p class="image"><img src="http://localhost:4000/images/yoyos/leaf-mold-with-part.jpg" alt="Machining Leaf Cavity" /></p>
+
+<h3 id="manufacturing">Manufacturing!!</h3>
+
+<p>After machining, we started injection molding. This is where the results and all our mistakes really start to show. Fortunately we had good access to previous shrinkage data for similar parts, so we only had to re-machine a few molds to get our snap fits into tolerance.</p>
+
+<p class="image"><img src="http://localhost:4000/images/yoyos/raw-leaves.jpg" alt="Lots of parts during production setup" /></p>
+
+<p class="image"><img src="http://localhost:4000/images/yoyos/run-chart.png" alt="Production Run Chart for these parts" /></p>
+
+<h3 id="assembly">Assembly</h3>
+
+<p>After creating hundreds of parts in many different colors, we spread them all out and began clipping them together</p>
+
+<p class="image"><img src="http://localhost:4000/images/yoyos/assembly.png" alt="Assembly on the grass" /></p>
+
+<h3 id="team">Team!!!</h3>
+
+<p class="image"><img src="http://localhost:4000/images/yoyos/team.png" alt="Team" /></p>
+
+<h4 class="center-text" id="so-grateful-that-i-was-able-to-work-with-these-amazing-people">So grateful that I was able to work with these amazing people</h4>
+
+<h3 id="consider">Consider:</h3>
+<ol>
+  <li>Drop test</li>
+  <li>Snap fit</li>
+  <li>More on injection molding?</li>
+  <li>more pics</li>
+  <li>less options</li>
+  <li>stop lengthening this list</li>
+</ol>
+
+:ET

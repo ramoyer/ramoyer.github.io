@@ -1,6 +1,6 @@
 <div class="ui card">
 
-<!--     {% assign foundImage = 0 %}
+    {% assign foundImage = 0 %}
     {% assign images = post.content | split:"<img" %}
     {% for image in images %}
         {% if image contains 'src' %}
@@ -13,7 +13,7 @@
                 {% break %}
             {% endif %}
         {% endif %}
-    {% endfor %} -->
+    {% endfor %} 
 
     <div class="content">
         <a class="header" href="{{ BASE_PATH }}{{ post.url }}">{{ post.title | strip_html | truncatewords: 15 }}</a>
@@ -28,15 +28,7 @@
             {{ post.content | strip_html | truncatewords: 30 }}
         </div>
     </div>
-    <div class="extra content">
-        <i class="comments icon"></i>
-        <a href="{{ post.url }}index.html#disqus_thread" data-disqus-identifier="{{post.url}}">
-            0 Comments
-        </a>
-        {% if post.author %}
-        <div class="right floated author">
-            <img class="ui avatar image" src="/assets/img/profile.jpg"> {{ post.author }}
-        </div>
-        {% endif %}
-    </div>
+    
+    <!-- Make the entire card clickable -->
+    <a href="{{ BASE_PATH }}{{ post.url }}"><span class="clickable"></span></a>
 </div>

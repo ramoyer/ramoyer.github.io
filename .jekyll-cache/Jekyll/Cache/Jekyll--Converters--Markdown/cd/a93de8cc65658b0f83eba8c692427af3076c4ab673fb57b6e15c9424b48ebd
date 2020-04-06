@@ -1,0 +1,51 @@
+I"�<p class="image"><img src="http://localhost:4000/images/card-reader/teensy.jpg" alt="Micro chip" /></p>
+
+<h3 id="background">Background</h3>
+
+<p>MIT’s 6.002, Circuits and Electronics, has a <a href="https://6002.catsoop.org/F19/lab9">lab where they teach students how to build a radio circuit to read their ID cards.</a>  Since I took the class in the fall of 2017, the circuit design has changed and the instructors now include software that can read and display the binary card data, but when I took the class this didn’t exist so I built my own.  It’s also a significantly different approach than what the class uses, but my design uses far less parts.  I built this in the summer of 2018 in between research projects and my work with MIT EMS.</p>
+
+<h3 id="circuit-details">Circuit Details</h3>
+
+<p>MIT ID cards us a nominal 125khz RFID chip that recieves power at 125khz and transmits 1/2 and 3/2 of this drive frequency. Data is transmitted on this 62.5khz signal with phase shift keying and 16 cycles/bit.  To retrieve this data, we can use one coil to send a 125khz signal and a second coil to recieve the combined 125khz and 62.5khz signals.  I used a 62.5khz resonant circuit connected to the recieving coil, and connected this to my chip’s analog input for processing. Here’s the full breadboard layout:</p>
+
+<p class="image"><img src="http://localhost:4000/images/card-reader/reader.jpg" alt="Card Reader Breadboard Layout" /></p>
+
+<h3 id="software">Software</h3>
+
+<h4 id="initial-plan">Initial plan:</h4>
+<ul>
+  <li>Capture data at at least twice the carrier frequency, then use signal processing to analyze this
+    <ul>
+      <li>Exactly twice the carrier frequency may not capture the wave, so I probably need 4 samples/cycle to accurately reproduce it</li>
+      <li>Sampling with an Arduino at 250khz is hard, the base data rate for the ADC is 15.6 khz, as the default is to average 1024 samples together. Additionally, we run out of memory for 4 samples/cycle x 16 cycles/bit x 224 bits/sample</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Also, our data is noisy and signal processing is hard.</p>
+
+<p>However, I realized that if we provide the driving 125khz signal from our microchip, we can predict exactly when the peaks and valleys of the recieved signal are, and just measure these peaks.</p>
+
+<p>Since these cards use phase-shift keying, each analog measurement will either be at a peak or a valley for 16 consecutive samples, indicating a 1 or 0.  This was then implemented with 20,000 samples, providing enough space to record the complete card data about 5 times.  In order to sample each peak fast enough and to store all this data, I switched from an Arduino to a Teensy 3.2 I had on hand. Here’s the waveform that the Teensy sends back to my computer:</p>
+
+<p class="image"><img src="http://localhost:4000/images/card-reader/waveform.png" alt="Data Waveform" /></p>
+
+<h3 id="data-processing">Data Processing</h3>
+
+<p>Once we have analog measurements at each wave peak, converting this into binary data is simple:</p>
+<ol>
+  <li>Compute the average of the voltage readings</li>
+  <li>Assign a 0 to any voltage less than the average, and a 1 to any voltage greater than the average</li>
+  <li>Remembering that I have 16 data points per card bit, find a string of 30 0s in the card data. These are the start bits.</li>
+  <li>Sample every 16 points thereafter to read off the card data</li>
+</ol>
+
+<p>I originally sent the raw data from my chip to my computer and processed this all in Matlab, but it can be done on the chip itself, or with any other software program.</p>
+
+<h3 id="future">Future</h3>
+
+<p>I wanted to be able to write this to a chip so I could have a copy of my card in my phone case or my watch - however, the complexity of writing this data to a chip is much higher than just reading it and I ran out of time before the summer ended.</p>
+
+<p class="image"><img src="http://localhost:4000/images/card-reader/reader-with-card.jpg" alt="Card Reader with card" /></p>
+
+:ET

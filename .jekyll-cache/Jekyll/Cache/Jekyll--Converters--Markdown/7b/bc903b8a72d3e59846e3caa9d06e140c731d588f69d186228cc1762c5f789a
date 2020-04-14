@@ -1,0 +1,47 @@
+I"ˆ<p class="image"><img src="http://localhost:4000/images/yoyos/yoyos.jpg" alt="Yo-yos on grass" /></p>
+
+<h3 id="class">Class</h3>
+
+<p>2.008 is known as the yo-yo class at MIT.  The registrar calls it Design and Manufacturing II, and we learned about mass manufacturing and process control in the context of making our very own yo-yos.</p>
+
+<h3 id="design">Design</h3>
+
+<p>We started out by creating our own design with a minimum of 2 separate injection molded parts and one thermoformed part.  We went a bit above and beyond with 4 unique injection molded parts and 2 thermoformed parts. After deciding as a team on our design, we spent a few days creating the CAD and then a few weeks finalizing the details and converting it into G-code for our CNC lathe and mills.</p>
+
+<p class="image"><img src="http://localhost:4000/images/yoyos/exploded-cad.jpg" alt="Yoyo exploded CAD" /></p>
+
+<h3 id="mold-creation">Mold Creation</h3>
+
+<p>After CAD finalization, we started machining!  Since our yoyo parts are generally round, we rough cut most of the molds on a lathe and then used a mill for the non-round details:</p>
+
+<p class="image"><img src="http://localhost:4000/images/yoyos/leaf-machining.jpg" alt="Machining Leaf Cavity" /></p>
+
+<p>Sometimes there were a lot of details! We were split into 3 teams of 2 people, and this was one of the parts I was responsible for.  This was our most complicated part, with 21 sealing areas to make the open framework of green that holds the flower.  Hereâ€™s the finished mold and a sample part:</p>
+
+<p class="image"><img src="http://localhost:4000/images/yoyos/leaf-mold-with-part.jpg" alt="Machining Leaf Cavity" /></p>
+
+<h3 id="manufacturing">Manufacturing!!</h3>
+
+<p>After machining, we started injection molding. This is where the results and all our mistakes really start to show. Fortunately we had good access to previous shrinkage data for similar parts, so we only had to re-machine a few molds to get our snap fits into tolerance.</p>
+
+<p class="image"><img src="http://localhost:4000/images/yoyos/raw-leaves.jpg" alt="Lots of parts during production setup" /></p>
+
+<h3 id="control-charts">Control Charts</h3>
+
+<p>Part of this class involved tolerancing and tracking critical part dimensions throughout our production runs. We introduced a change to one of our injection molding parameters to simulate a machine error for part numbers 55-60, which showed up in our run chart:</p>
+
+<p class="image"><img src="http://localhost:4000/images/yoyos/run-chart.jpg" alt="Production Run Chart for these parts" /></p>
+
+<h3 id="assembly">Assembly</h3>
+
+<p>After creating hundreds of parts in many different colors, we spread them all out and began clipping them together! Creating all the parts took most of the semester, but we were able to assemble all of our yoyos in only a few hours.</p>
+
+<p class="image"><img src="http://localhost:4000/images/yoyos/assembly.jpg" alt="Assembly on the grass" /></p>
+
+<p><br /></p>
+
+<p class="image"><img src="http://localhost:4000/images/yoyos/team.jpg" alt="Team" /></p>
+
+<h4 class="center-text" id="so-grateful-that-i-was-able-to-work-with-these-amazing-people">So grateful that I was able to work with these amazing people</h4>
+
+:ET

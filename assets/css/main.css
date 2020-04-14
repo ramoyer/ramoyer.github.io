@@ -146,7 +146,7 @@ posts in Markdown instead of HTML */
 }
 
 .bio {
-    font-weight: bold;
+    font-size: 1.2rem;
     display: inline-block;
 }
 
@@ -163,6 +163,10 @@ posts in Markdown instead of HTML */
 .small-date {
     color: rgba(0,0,0,.75);
     font-weight: lighter;   
+}
+
+.caption{
+    font-style: italic;
 }
 
 .description {

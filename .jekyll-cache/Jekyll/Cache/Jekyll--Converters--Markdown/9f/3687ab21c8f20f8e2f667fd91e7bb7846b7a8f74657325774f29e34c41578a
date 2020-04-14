@@ -1,0 +1,71 @@
+I"U <p class="image"><img src="http://localhost:4000/images/HICE/HICEAssembly.png" alt="Hydrogen Engine" /></p>
+
+<h3 id="background">Background</h3>
+
+<p>In collaboration with the US Navy, the MIT Lincoln Laboratory has been researching reacting pelletized aluminum fuel with water as an alternative power source for long duration underwater missions.  Doping aluminum with gallium allows it to corrode in water without producing a passivating layer. This reaction can be harnessed to produce hydrogen gas at higher energy densities than lithium ion batteries or gasoline can provide.  However, this hydrogen gas contains steam and other impurities that make it poorly suited for electric fuel cell use, so we were tasked with exploring internal combustion as a more robust way to convert this hydrogen into electrical power. So</p>
+
+<h4 class="center-text" id="aluminum--water">Aluminum + Water</h4>
+<h1 class="arrow">↓</h1>
+<h4 class="center-text" id="hydrogen-gas">Hydrogen Gas</h4>
+<h1 class="arrow" id="-1">↓</h1>
+<h4 class="center-text" id="engine">Engine</h4>
+<h1 class="arrow" id="-2">↓</h1>
+<h4 class="center-text" id="electrical-generator">Electrical Generator</h4>
+<h1 class="arrow" id="-3">↓</h1>
+<h4 class="center-text" id="onboard-electrical-systems">Onboard Electrical Systems</h4>
+
+<p>As other teams were doing extensive work with the aluminium - water reaction, we decided to skip this part of the system and use hydrogen from a tank for our initial system.</p>
+
+<h3 id="team">Team</h3>
+
+<p>After the initial group selection, my team started exploring the previous research on our project and planning our approach. Our team was made up of four students: Sam took over the engine, Mitch the hardware connections, Dillon the software, and I handled the air and fuel delivery systems. We were given several small two and four stroke engines from the previous semester, along with a 3 phase skateboard motor with braking capabilities that we could use to generate electricity. We shifted responsiblities and assisted each other quite frequently throughout the semester to get this project done.</p>
+
+<h3 id="air-and-fuel-subsystems">Air and Fuel Subsystems</h3>
+
+<p>We realized very early on that we could harness the wide explosive limits of hydrogen to our advantage.  Gasoline only burns when mixed with a fairly precise mixture of air, roughly 4.0 to 75 percent. Outside of this range, an air-fuel mixture will not ignite at all and the engine will completely lose power, so gasoline engines must reduce air and fuel flow simultaneously in order to maintain a flammable mixture and control engine speed. However, hydrogen burns over an incredibly large range of concentrations - 4 percent to 70 percent - so engine speed can be controlled just by controlling the flow of hydrogen. We did some initial engine testing with a flow meter, and then switched to a fuel injector designed for methane to give us a faster response and better engine control.</p>
+
+<h3 id="code">Code</h3>
+
+<p>In order to control this setup, I built an Arduino-based engine control unit.  To simplify the software, the speed was controlled by using the inverse of rotational speed, or the time between rotations.  As the system is well-damped over most load ranges, simple proportional control worked well for this setup.  Using the inverse of speed for the calculations means that the controller is not operating with a linear system, but the simple principle of increasing or decreasing fuel to reach a setpoint still works quite well. Full code is <a href="https://github.com/ramoyer/hydrogen-engine">available here.</a></p>
+
+<div class="language-cpp scroll-code highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1">// pin numbers:</span>
+  <span class="k">const</span> <span class="n">THROTTLEPIN</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span>   <span class="c1">// Analog input from potentiometer to control speed.  REQUIRED TO BE AN ANALOG INPUT</span>
+  <span class="k">const</span> <span class="n">INJECTORPIN</span> <span class="o">=</span> <span class="mi">12</span><span class="p">;</span>  <span class="c1">// Output to injector circuit.  This goes through a 200 Ω resistor (limits current to 25mA) to a darlington transistor/mosfet base for injection control</span>
+  <span class="k">const</span> <span class="n">TIMINGPIN</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>     <span class="c1">// Input from Hall Effect sensor, or equivalently tachometer connection on ignition module. LOOK UP WIRING DIAGRAMS FOR THIS as hall effect sensor pull the sense pin low, but need an external resistor attached to pull it high when not sensing a magnet. </span>
+  <span class="k">const</span> <span class="n">LEDPIN</span> <span class="o">=</span> <span class="mi">13</span><span class="p">;</span>       <span class="c1">// Makes the on-board LED turn on whenever the injector does</span>
+
+  <span class="c1">// values</span>
+  <span class="k">const</span> <span class="n">DT_LOW</span> <span class="o">=</span> <span class="mi">5000</span><span class="p">;</span>     <span class="c1">// Rotation time at full speed, in µs.  = 60,000,000/rpm</span>
+  <span class="k">const</span> <span class="n">DT_HIGH</span> <span class="o">=</span> <span class="mi">50000</span><span class="p">;</span>   <span class="c1">// Rotation time at idle, in µs.  = 60,000,000/rpm</span>
+  <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">MAXFUEL</span> <span class="o">=</span> <span class="mi">1200</span><span class="p">;</span>  <span class="c1">// microseconds of flow for one cylinder of stochiometric fuel INSERT CALIBRATED VALUE HERE </span>
+</code></pre></div></div>
+
+<h3 id="fuel-injector-circuit">Fuel Injector Circuit</h3>
+
+<p>Our Bosch fuel injector is designed for a peak-and-hold waveform to rapidly open the solenoid then use a lower power to hold it open.  We could not find any compact drivers for this, so I made one myself.  After doing some research on driver chips and circuit layout, I realized I could achieve the same output as a switched driver with fewer parts that I had on hand if I was willing to burn some extra power with a large resistor (R1).</p>
+
+<p>The capacitor charges while the injector is off, and then provides a 48 volt peak that is regulated to a steady level by R1 for the hold portion of the waveform. Note the Zener diode D1 to prevent voltage spikes that could destroy our MOSFET or other circuit components when the drive signal is turned off.</p>
+
+<p><img src="http://localhost:4000/images/HICE/fuelinjectorwiring.jpg" alt="Circuit Diagram" /></p>
+
+<p class="center-text caption">Circuit Diagram</p>
+
+<p class="image"><img src="http://localhost:4000/images/HICE/waveform.jpg" alt="Circuit Diagram" /></p>
+
+<p class="center-text caption">Resultant waveform with three peaks. For long injections, there is a longer hold section to the right of each peak.</p>
+
+<h3 id="challenges">Challenges</h3>
+
+<p>Like the team before us, we faces some significant challenges.  We had numerous driveshaft failures, fuel system failures (due to a sticky solenoid), code failures that would stall our engine or make it run away, and even logistics issues when the lab ran out of hydrogen.</p>
+
+<p class="image"><img src="http://localhost:4000/images/HICE/shaftfailure.jpg" alt="Driveshaft Failure" /></p>
+
+<p class="center-text caption">Damaged driveshaft after our engine backfired</p>
+
+<h3 id="final-results">Final Results</h3>
+
+<p>We were aiming for a power output of 1 kW, but our power ended up peaking at 35% of full fuel flow, and 35% of expected power output with a thermal efficiency of around 15%. We strongly suspected the low power output was due to poor air-fuel mixing, and both the power and efficiency should increase if this is resolved.  However, by the end of this project, we had started from nearly the ground up and built our own engine control unit, control algorithms, frame, safety systems, and hardware connections and were able to generate electricity from hydrogen.</p>
+
+<p class="image"><img src="http://localhost:4000/images/HICE/results.png" alt="Results graph" /></p>
+
+:ET

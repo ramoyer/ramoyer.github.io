@@ -62,7 +62,7 @@ There were no on-board guides to help autonomous operation, but I found one edge
 3. Find that edge and operate my robot with under 3/4 inch of tolerance -- or the entire robot would fall off the edge and end the match
 4. Be time bounded by under 8 seconds, and take the same amount of time for every run
 
-I ended up creating a simple algorithm that logged the time since the boundary was last seen, and started turning towards the boundary at an exponential rate until it was found.  Every time the boundary was crossed, the turn rate was cut in half and the process re-started. After tuning this, I was able to start at over 2 inches off target, never cross the target by more than 3/4 of an inch, and stabilize within 2 feet down to imperceptible movement.
+I ended up creating a simple algorithm that logged the time since the boundary was last seen, and started turning towards the boundary at an exponential rate until it was found.  Every time the boundary was crossed, the turn rate was cut in half and the process re-started. After tuning this, I was able to start at over 2 inches off target, never cross the target by more than 3/4 of an inch, and stabilize within 2 feet down to imperceptible movement.  [Operating code is available here!](https://github.com/ramoyer/mit-robot)
 
 
 <p class="center-text"><video width="360" height="640" controls><source src="{{ site.url }}/images/2.007/edgefollow.mp4" type="video/mp4">Your browser does not support the video tag.</video></p>

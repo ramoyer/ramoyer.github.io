@@ -1,0 +1,22 @@
+I"L<h3 id="homemade-mask-material-selection">Homemade Mask Material Selection</h3>
+
+<p>With the current pandemic, shortages of PPE, and growing mandates to wear masks in public, many people are turning to making their own.  However, when my family and I started making masks in early April, it was hard to find even any qualitative data on the performance of the t-shirts, quilting fabric, or coffee filters that were being used. So, I created a simple aerosol machine I could attach to candidate materials.</p>
+
+<h3 id="design">Design</h3>
+
+<p>To create a sneeze-like aerosol, I decided to use the venturi effect to draw water into an air stream and aerosolize it, similar to a carburetor in a small engine. I used an air compressor with some restrictions to get a moderate flow of air, and attached a 16 guage hypodermic needle across the exit with the taper facing down-stream. The needle was attached with a short piece of tubing to a balloon that served as a water reservoir.</p>
+
+<p class="image"><img src="http://localhost:4000/images/mask_testing/venture.jpg" alt="Nozzle Close-Up" /> <!--- insert the right image here ---></p>
+
+<h3 id="results">Results</h3>
+
+<p>I tested a 3M N-95 mask, a surgical mask from a convenience store in Egypt (don’t ask), 100% cotton and cotton blend t-shirts, quilting cotton, coffee filters, paper towels, a merino wool head wrap, a re-usable non-woven grocery bag, and some combinations of paper towels/coffee filters with a cotton outer layer.</p>
+
+<ol>
+  <li>All the ask materials significantly reduced the amount of droplets exiting the bottle</li>
+  <li>The 3M mask allowed 0 visible particles through – very far above any other material tested</li>
+  <li>The thin surgical mask performed no better than a coffee filter or a cotton sheet. I suspect thicker/multilayer surgical masks will perform much better, but I did not have these on hand</li>
+  <li>With the exception of the 3M N95, materials or material combinations that were more difficult to breathe through filtered more particles</li>
+  <li>Multiple layers increased the filtering function for all materials</li>
+</ol>
+:ET

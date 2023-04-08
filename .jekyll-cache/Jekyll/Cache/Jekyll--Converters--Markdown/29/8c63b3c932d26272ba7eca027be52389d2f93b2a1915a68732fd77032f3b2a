@@ -1,0 +1,17 @@
+I"�<p>This is a copy of a ball race I saw one day at a career fair from a 3d printing firm. I was told it was a “waste of time” to print but ball races are fun! I also added ball return in the form of a photocell, servo, and magnetic arm. The inspiration piece did not have any ball return mechanism.</p>
+
+<h3 id="3d-body">3d Body</h3>
+
+<p>Modeling this was a nightmare. Solidworks does not like two surfaces that touch tangent to each other or any edges that approach 0 thickness so any swept cuts do not work. Swept paths do not work. Extrudes have no slope. Drafts only work on one surface at a time (no chains like I need all the way down) Years after my initial attempt I had time and access to Fusion 360, and I ended up building it by creating a set of 4 base bodies and 4 turns, then doing several hundred move bodies, mates, and extrude from face commands. 90 second rebuild times on a good day. Not fun. I think it was around 18 months from first cad attempt to first print.</p>
+
+<h3 id="ball-lifter">Ball Lifter</h3>
+<p>I had a few Attiny 85’s, a photocell, and some other random parts leftover from a previous project and this seemed like the perfect opportunity to use them. The code is quite simple; look for a drop in the light value on a photocell positioned at the bottom of the track, then run the servo back and forwards far enough to lift the ball and place it at the top of the track. The whole thing runs on 5v and a few hundred milliamps supplied from a usb cable so it can be plugged in to most USB supplies or a computer.</p>
+
+<h3 id="action">Action</h3>
+
+<p class="image"><img src="http://localhost:4000/images/ball_race/ball_race.mp4" alt="Video clip of ball moving down race and being lifted to top" /></p>
+<p class="center-text caption">In Action</p>
+
+<p class="center-text"><video width="640" height="640" controls=""><source src="http://localhost:4000/images/ball_race/ball_race.mp4" type="video/mp4" />Your browser does not support the video tag.</video></p>
+
+:ET
